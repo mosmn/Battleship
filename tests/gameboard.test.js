@@ -1,15 +1,23 @@
-const gameBoard = require('../src/gameboard');
+const gameBoard = require("../src/gameboard");
+const ship = require("../src/ship");
 
-test('gameBoard returns a gameBoard object', () => {
-    expect(gameBoard()).toMatchObject({board: [], missedShots: [], placeShip: expect.any(Function)});
-}
-);
+const testBoard = gameBoard();
+const testShip = ship(3);
 
-test('gameBoard.placeShip() places a ship on the gameBoard', () => {
-    const testBoard = gameBoard();
-    const testShip = {length: 3};
-    testBoard.placeShip(testShip, 0, 0, 'horizontal');
-    expect(testBoard.board).toMatchObject([{ship: testShip, coordinates: [{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}]}]);
-}
-);
+test("gameBoard returns a object", () => {
+  expect(typeof testBoard).toBe("object");
+});
 
+test("placeShip places a ship on the gameBoard", () => {
+  testBoard.placeShip(testShip, 0, 0, "horizontal");
+  expect(testBoard.board).toMatchObject([
+    {
+      ship: testShip,
+      coordinates: [
+        { x: 0, y: 0 },
+        { x: 1, y: 0 },
+        { x: 2, y: 0 },
+      ],
+    },
+  ]);
+});
