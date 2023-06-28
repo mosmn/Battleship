@@ -1,5 +1,3 @@
-import { ship } from "./ship.js";
-
 export const gameBoard = () => {
   const board = [];
   const missedShots = [];
@@ -34,7 +32,16 @@ export const gameBoard = () => {
     missedShots.push({ x, y });
   };
 
-  return { board, missedShots, placeShip, receiveAttack };
+  const allShipsSunk = () => {
+    for (let i = 0; i < board.length; i++) {
+      if (!board[i].ship.isSunk()) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  return { board, missedShots, placeShip, receiveAttack, allShipsSunk };
 };
 
 module.exports = gameBoard;

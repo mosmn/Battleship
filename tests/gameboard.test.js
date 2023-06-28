@@ -36,3 +36,16 @@ test("receiveAttack records a hit on a ship", () => {
   testBoard.receiveAttack(0, 0);
   expect(testShip.hitArray).toMatchObject([true, false, false]);
 });
+
+test("allShipsSunk returns true if all ships are sunk", () => {
+  expect(testBoard.allShipsSunk()).toBe(false);
+  testBoard.receiveAttack(1, 0);
+  testBoard.receiveAttack(2, 0);
+  expect(testBoard.allShipsSunk()).toBe(true);
+
+  const extraTestShip = ship(2);
+  testBoard.placeShip(extraTestShip, 0, 1, "vertical");
+  testBoard.receiveAttack(0, 1);
+  testBoard.receiveAttack(0, 2);
+  expect(testBoard.allShipsSunk()).toBe(true);
+});
