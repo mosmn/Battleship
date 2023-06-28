@@ -1,0 +1,28 @@
+:root {
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  line-height: 1.6em;
+  margin: 0;
+  padding: 0px;
+  height: 100vh;
+}
