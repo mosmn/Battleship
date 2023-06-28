@@ -3,6 +3,7 @@ const ship = require("../src/ship.js");
 test("ship factory function", () => {
   expect(ship(3)).toEqual({
     length: 3,
+    hitArray: [false, false, false],
     hit: expect.any(Function),
     isSunk: expect.any(Function),
   });
@@ -11,7 +12,7 @@ test("ship factory function", () => {
 test("ship hit function", () => {
   const testShip = ship(3);
   testShip.hit(1);
-  expect(testShip.isSunk()).toBe(false);
+  expect(testShip.hitArray).toMatchObject([false, true, false]);
 });
 
 test("ship isSunk function", () => {

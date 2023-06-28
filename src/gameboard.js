@@ -22,14 +22,14 @@ export const gameBoard = () => {
 
   const receiveAttack = (x, y) => {
     for (let i = 0; i < board.length; i++) {
-        const ship = board[i].ship;
-        const coordinates = board[i].coordinates;
-        for (let j = 0; j < coordinates.length; j++) {
-            if (coordinates[j].x === x && coordinates[j].y === y) {
-                ship.hit(j);
-                return;
-            }
+      const ship = board[i].ship;
+      const coordinates = board[i].coordinates;
+      for (let j = 0; j < coordinates.length; j++) {
+        if (coordinates[j].x === x && coordinates[j].y === y) {
+          ship.hit(j);
+          return;
         }
+      }
     }
     missedShots.push({ x, y });
   };
