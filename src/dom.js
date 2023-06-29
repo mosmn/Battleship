@@ -7,11 +7,24 @@ const createElement = (element, className, id) => {
   return newElement;
 }
 
-const createBoard = (board, boardId, boardClass) => {
-  const newBoard = createElement("div", boardClass, boardId);
-  for (let i = 0; i < board.length; i++) {
-    const newSquare = createElement("div", "square", `square${i}`);
-    newBoard.appendChild(newSquare);
+const create10x10board = () => {
+  const board = createElement("div", "board", "board");
+  for (let i = 0; i < 10; i++) {
+    const row = createElement("div", "row", `row${i}`);
+    board.appendChild(row);
+    for (let j = 0; j < 10; j++) {
+      const cell = createElement("div", "cell", `cell${i}${j}`);
+      row.appendChild(cell);
+    }
   }
-  return newBoard;
+
+  return board;
 }
+
+const boardsContainer = createElement("div", "boards-container", "boards-container");
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.appendChild(boardsContainer);
+  boardsContainer.appendChild(create10x10board());
+  boardsContainer.appendChild(create10x10board());
+}
+);

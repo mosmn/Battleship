@@ -26,3 +26,27 @@ body {
   padding: 0px;
   height: 100vh;
 }
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 1px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  flex: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.boards-container {
+  display: flex;
+  gap: 20px;
+}
