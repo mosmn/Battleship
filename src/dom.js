@@ -1,11 +1,13 @@
 import "./style.css";
+// import { createShip } from "./ship";
+// import { player, ai } from "./player";
 
 const createElement = (element, className, id) => {
   const newElement = document.createElement(element);
   newElement.className = className;
   newElement.id = id;
   return newElement;
-}
+};
 
 const create10x10board = () => {
   const board = createElement("div", "board", "board");
@@ -19,12 +21,15 @@ const create10x10board = () => {
   }
 
   return board;
-}
+};
 
-const boardsContainer = createElement("div", "boards-container", "boards-container");
+const boardsContainer = createElement(
+  "div",
+  "boards-container",
+  "boards-container"
+);
 document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(boardsContainer);
   boardsContainer.appendChild(create10x10board());
   boardsContainer.appendChild(create10x10board());
-}
-);
+});

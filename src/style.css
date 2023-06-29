@@ -29,24 +29,33 @@ body {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
-  gap: 1px;
   background-color: #eee;
   border: 1px solid #ccc;
+  width: 410px;
+  height: 410px;
 }
 
 .row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
 }
 
 .cell {
-  flex: 1;
   background-color: #fff;
   border: 1px solid #ccc;
+  width: 100%;
+  height: 100%;
+
+  &:hover {
+    background-color: #ddd;
+  }
 }
 
 .boards-container {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 2rem;
 }

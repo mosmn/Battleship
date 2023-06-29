@@ -1,4 +1,4 @@
-export const gameBoard = () => {
+export default gameBoard = () => {
   const board = [];
   const missedShots = [];
   const alreadyAttacked = [];

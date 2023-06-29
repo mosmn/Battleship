@@ -10,8 +10,8 @@ beforeAll(() => {
 });
 
 test("Check if player and AI are objects", () => {
-    expect(typeof testPlayer).toBe("object");
-    expect(typeof AIPlayer).toBe("object");
+  expect(typeof testPlayer).toBe("object");
+  expect(typeof AIPlayer).toBe("object");
 });
 
 test("Player attacks AI", () => {
