@@ -50,7 +50,7 @@ test("allShipsSunk returns true if all ships are sunk", () => {
   expect(testBoard.allShipsSunk()).toBe(true);
 });
 
-test('Check if a coordinate has already been attacked', () => {
-    expect(testBoard.checkIfAttacked(0, 0)).toBe(true);
-    expect(testBoard.checkIfAttacked(5, 5)).toBe(false);
+test("Check if a coordinate has already been attacked", () => {
+  expect(testBoard.checkIfAttacked(0, 0)).toBe(true);
+  expect(testBoard.checkIfAttacked(5, 5)).toBe(false);
 });
