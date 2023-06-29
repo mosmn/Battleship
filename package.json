@@ -8,7 +8,8 @@
     "watch": "jest --watchAll",
     "build": "webpack",
     "start": "webpack serve --open",
-    "pretty": "prettier --write ."
+    "pretty": "prettier --write .",
+    "ghpages": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages"
   },
   "repository": {
     "type": "git",
