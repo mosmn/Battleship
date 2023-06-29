@@ -1,15 +1,34 @@
+import gameBoard from './gameBoard.js';
+
 export const player = () => {
-    const gameBoard = gameBoard();
+    const playerGameBoard = gameBoard();
     
-    const attack = (x, y) => {
-        if (x < 0 || x > 9 || y < 0 || y > 9) {
+    const attackAI = (x, y, oppsGameBoard) => {
+        if(oppsGameBoard.checkIfAttacked(x, y)) {
             return;
         } else {
-            gameBoard.receiveAttack(x, y);
+            oppsGameBoard.receiveAttack(x, y);
         }
     };
+
     
-    return { gameBoard, attack };
+    return { playerGameBoard, attackAI };
 }
 
-module.exports = player;
+export const ai = () => {
+    const aiGameBoard = gameBoard();
+
+    const attack = (oppsGameBoard) => {
+        const x = Math.floor(Math.random() * 10);
+        const y = Math.floor(Math.random() * 10);
+        if(oppsGameBoard.checkIfAttacked(x, y)) {
+            attack(oppsGameBoard);
+        } else {
+            oppsGameBoard.receiveAttack(x, y);
+        }
+    };
+
+    return { aiGameBoard, attack };
+}
+
+module.exports = { player, ai };
