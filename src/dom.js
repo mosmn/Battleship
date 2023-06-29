@@ -1,10 +1,10 @@
 import "./style.css";
 
-const helloWorld = () => {
-  const content = document.createElement("div");
-  content.classList.add("hello-world");
-  content.innerHTML = "Hello World";
-  return content;
-};
+const createElement = (element, className, id) => {
+  const newElement = document.createElement(element);
+  newElement.className = className;
+  newElement.id = id;
+  return newElement;
+}
 
-document.body.appendChild(helloWorld());
+
