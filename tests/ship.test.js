@@ -1,4 +1,4 @@
-const ship = require("../src/ship.js");
+import {ship} from "../src/ship.js";
 
 test("ship factory function", () => {
   expect(ship(3)).toEqual({

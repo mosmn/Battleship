@@ -6,5 +6,3 @@ export const ship = (length) => {
   const isSunk = () => hitArray.every((position) => position === true);
   return { length, hitArray, hit, isSunk };
 };
-
-module.exports = ship;

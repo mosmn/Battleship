@@ -1,5 +1,4 @@
-const { player } = require("../src/player");
-const { ai } = require("../src/player");
+import { player, ai } from "../src/player.js";
 
 let testPlayer;
 let AIPlayer;

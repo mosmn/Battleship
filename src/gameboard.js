@@ -1,4 +1,4 @@
-export default gameBoard = () => {
+export const gameBoard = () => {
   const board = [];
   const missedShots = [];
   const alreadyAttacked = [];
@@ -62,5 +62,3 @@ export default gameBoard = () => {
     checkIfAttacked,
   };
 };
-
-module.exports = gameBoard;

@@ -1,4 +1,4 @@
-import gameBoard from "./gameboard.js";
+import {gameBoard} from "./gameboard.js";
 
 export const player = () => {
   const playerGameBoard = gameBoard();
@@ -30,4 +30,4 @@ export const ai = () => {
   return { aiGameBoard, attack };
 };
 
-module.exports = { player, ai };
+// module.exports = { player, ai };

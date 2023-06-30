@@ -1,6 +1,9 @@
 import "./style.css";
-// import { createShip } from "./ship";
-// import { player, ai } from "./player";
+import {ship} from "./ship";
+import { player, ai } from "./player.js";
+
+const humanPlayer = player();
+const computerPlayer = ai();
 
 const createElement = (element, className, id) => {
   const newElement = document.createElement(element);
@@ -28,6 +31,7 @@ const boardsContainer = createElement(
   "boards-container",
   "boards-container"
 );
+
 document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(boardsContainer);
   boardsContainer.appendChild(create10x10board());

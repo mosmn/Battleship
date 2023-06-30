@@ -1,5 +1,5 @@
-const gameBoard = require("../src/gameboard");
-const ship = require("../src/ship");
+import { gameBoard } from "../src/gameboard";
+import { ship } from "../src/ship";
 
 let testShip;
 let testBoard;
