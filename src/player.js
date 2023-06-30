@@ -29,5 +29,3 @@ export const ai = () => {
 
   return { aiGameBoard, attack };
 };
-
-// module.exports = { player, ai };

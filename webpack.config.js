@@ -8,6 +8,7 @@ module.exports = {
     gameboard: "./src/gameboard.js",
     player: "./src/player.js",
     ship: "./src/ship.js",
+    gameLoop: "./src/gameLoop.js",
   },
   devtool: "inline-source-map",
   devServer: {

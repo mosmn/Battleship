@@ -1,9 +1,5 @@
 import "./style.css";
-import {ship} from "./ship";
-import { player, ai } from "./player.js";
-
-const humanPlayer = player();
-const computerPlayer = ai();
+import { gameLoop } from "./gameLoop";
 
 const createElement = (element, className, id) => {
   const newElement = document.createElement(element);
@@ -12,13 +8,15 @@ const createElement = (element, className, id) => {
   return newElement;
 };
 
-const create10x10board = () => {
-  const board = createElement("div", "board", "board");
+const create10x10board = (player) => {
+  const board = createElement("div", "board", `${player}Board`);
   for (let i = 0; i < 10; i++) {
     const row = createElement("div", "row", `row${i}`);
     board.appendChild(row);
     for (let j = 0; j < 10; j++) {
-      const cell = createElement("div", "cell", `cell${i}${j}`);
+      const cell = createElement("div", "cell", "");
+      cell.setAttribute("data-x", j);
+      cell.setAttribute("data-y", i);
       row.appendChild(cell);
     }
   }
@@ -32,8 +30,11 @@ const boardsContainer = createElement(
   "boards-container"
 );
 
-document.addEventListener("DOMContentLoaded", () => {
+const iniatialPage =  () => {
   document.body.appendChild(boardsContainer);
-  boardsContainer.appendChild(create10x10board());
-  boardsContainer.appendChild(create10x10board());
-});
+  boardsContainer.appendChild(create10x10board("human"));
+  boardsContainer.appendChild(create10x10board("computer"));
+};
+
+
+document.addEventListener("DOMContentLoaded", iniatialPage);
