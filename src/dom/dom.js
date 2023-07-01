@@ -23,18 +23,21 @@ export const create10x10board = (player) => {
   boardsContainer.appendChild(board);
 };
 
+const removeMessage = () => {
+  const messageContainer = document.querySelector(".message-container");
+  messageContainer.remove();
+}
+
 export const renderMessage = (message) => {
+  if (document.querySelector(".message-container")) {
+    removeMessage();
+  }
   const messageContainer = createElement("div", "message-container", "");
   const messageElement = createElement("p", "message", "");
   messageElement.textContent = message;
   messageContainer.appendChild(messageElement);
   document.body.appendChild(messageContainer);
 };
-
-export const removeMessage = () => {
-  const messageContainer = document.querySelector(".message-container");
-  messageContainer.remove();
-}
 
 export const displayHumanShips = (playerGameBoard) => {
   const humanBoard = document.getElementById("playerBoard");
@@ -51,28 +54,41 @@ export const displayHumanShips = (playerGameBoard) => {
   }
 }
 
-export const renderAIBoard = (gameBoard) => {
-  const board = document.getElementById("aiBoard");
+const renderBoard = (gameBoard, boardId) => {
+  const board = document.getElementById(boardId);
   const missedShots = gameBoard.missedShots;
+  const boardSize = board.children.length;
+
   for (let i = 0; i < missedShots.length; i++) {
-    const x = missedShots[i].x;
-    const y = missedShots[i].y;
+    const { x, y } = missedShots[i];
     const cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`);
     cell.classList.add("missed");
   }
-  gameBoard.board.forEach(ship => {
-    ship.coordinates.forEach(coord => {
-      const x = coord.x;
-      const y = coord.y;
-      const cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`);
 
-      
-      if (ship.ship.hitArray[x]) {
+  for (let i = 0; i < boardSize; i++) {
+    const row = board.children[i].children;
+
+    for (let j = 0; j < boardSize; j++) {
+      const cell = row[j];
+      const x = parseInt(cell.dataset.x);
+      const y = parseInt(cell.dataset.y);
+
+      if (gameBoard.checkIfAttacked(x, y) && gameBoard.checkIfHit(x, y)) {
         cell.classList.add("hit");
       }
-    });
-  });
-}
+    }
+  }
+};
+
+export const renderAIBoard = (gameBoard) => {
+  renderBoard(gameBoard, "aiBoard");
+};
+
+export const renderPlayerBoard = (gameBoard) => {
+  renderBoard(gameBoard, "playerBoard");
+};
+
+
 
 
 

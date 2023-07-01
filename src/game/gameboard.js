@@ -72,6 +72,6 @@ export const gameBoard = () => {
     receiveAttack,
     allShipsSunk,
     checkIfAttacked,
-    checkIfHit
+    checkIfHit,
   };
 };
