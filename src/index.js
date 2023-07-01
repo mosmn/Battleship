@@ -1,8 +1,6 @@
 import "../src/dom/dom.js";
 import { gameLoop } from "./game/gameLoop.js";
-import {
-  createElement,
-} from "../src/dom/dom.js";
+import { createElement } from "../src/dom/dom.js";
 
 const iniatialPage = () => {
   const container = createElement("div", "container", "");
