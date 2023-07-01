@@ -67,7 +67,3 @@ The Battleship project can be further enhanced with the following features:
 - Intelligent Computer Player: Improve the computer player's AI to make smarter moves, such as targeting adjacent slots after getting a hit, to provide a more challenging gameplay experience.
 - Two-Player Option: Implement a two-player mode that allows users to take turns playing on the same device. Include a "pass device" screen to prevent players from seeing each other's boards.
 - Styling and UI Enhancements: Enhance the visual design of the game interface, add animations, and improve the overall user experience.
-
-## Author
-
-The Battleship project is created by [Your Name].
