@@ -59,3 +59,7 @@ body {
   height: 100%;
   gap: 2rem;
 }
+
+.ship {
+  background-color: #000;
+}

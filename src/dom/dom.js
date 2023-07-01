@@ -1,14 +1,13 @@
 import "./style.css";
-import { gameLoop } from "./gameLoop";
 
-const createElement = (element, className, id) => {
+export const createElement = (element, className, id) => {
   const newElement = document.createElement(element);
   newElement.className = className;
   newElement.id = id;
   return newElement;
 };
 
-const create10x10board = (player) => {
+export const create10x10board = (player) => {
   const board = createElement("div", "board", `${player}Board`);
   for (let i = 0; i < 10; i++) {
     const row = createElement("div", "row", `row${i}`);
@@ -20,21 +19,14 @@ const create10x10board = (player) => {
       row.appendChild(cell);
     }
   }
-
-  return board;
+  const boardsContainer = document.getElementById("boards-container");
+  boardsContainer.appendChild(board);
 };
 
-const boardsContainer = createElement(
-  "div",
-  "boards-container",
-  "boards-container"
-);
-
-const iniatialPage =  () => {
-  document.body.appendChild(boardsContainer);
-  boardsContainer.appendChild(create10x10board("human"));
-  boardsContainer.appendChild(create10x10board("computer"));
+export const renderMessage = (message) => {
+  const messageContainer = createElement("div", "message-container", "");
+  const messageElement = createElement("p", "message", "");
+  messageElement.textContent = message;
+  messageContainer.appendChild(messageElement);
+  document.body.appendChild(messageContainer);
 };
-
-
-document.addEventListener("DOMContentLoaded", iniatialPage);

@@ -4,11 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    dom: "./src/dom.js",
-    gameboard: "./src/gameboard.js",
-    player: "./src/player.js",
-    ship: "./src/ship.js",
-    gameLoop: "./src/gameLoop.js",
+    index: './src/index.js',
   },
   devtool: "inline-source-map",
   devServer: {
@@ -41,14 +37,12 @@ module.exports = {
         test: /\.(?:js|mjs|cjs)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
-      }
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
+      },
     ],
   },
 };
