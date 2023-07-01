@@ -78,3 +78,47 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.ship-placement {
+  background-color: #000;
+}
+
+.message-container {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ddd;
+  text-align: center;
+}
+
+.game-over-container {
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.game-over-gift {
+  width: 200px;
+  height: auto;
+}
+
+.play-again-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.play-again-button:hover {
+  background-color: #45a049;
+}
+
+.orientation-button {
+  margin-left: 10px;
+}
+
+.random-placement-button {
+  margin-left: 10px;
+}

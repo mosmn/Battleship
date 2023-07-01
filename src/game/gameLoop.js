@@ -12,36 +12,97 @@ import {
 export const gameLoop = (() => {
   let human = null;
   let computer = null;
+  let shipLength = 5;
+  const direction = "horizontal";
 
   const createGameBoards = () => {
-    human.playerGameBoard.placeShip(ship(5), 0, 0, "horizontal");
-    human.playerGameBoard.placeShip(ship(4), 0, 1, "horizontal");
-    human.playerGameBoard.placeShip(ship(3), 0, 2, "horizontal");
-    human.playerGameBoard.placeShip(ship(3), 0, 3, "horizontal");
-    human.playerGameBoard.placeShip(ship(2), 0, 4, "horizontal");
-    computer.aiGameBoard.placeShip(ship(5), 0, 0, "horizontal");
-    computer.aiGameBoard.placeShip(ship(4), 0, 1, "horizontal");
-    computer.aiGameBoard.placeShip(ship(3), 0, 2, "horizontal");
-    computer.aiGameBoard.placeShip(ship(3), 0, 3, "horizontal");
-    computer.aiGameBoard.placeShip(ship(2), 0, 4, "horizontal");
+    human = player();
+    computer = ai();
+    create10x10board("player");
+    create10x10board("ai");
+    generateRandomPlacement();
     console.log(computer.aiGameBoard);
+    displayHumanShips(human.playerGameBoard);
+
+    const playerBoard = document.getElementById("playerBoard");
+    const playerCells = playerBoard.querySelectorAll(".cell");
+
+    playerCells.forEach((cell) => {
+      cell.addEventListener("mouseover", handleCellHover);
+      cell.addEventListener("click", handleCellClick);
+    });
   };
 
   const startGame = () => {
-    human = player();
-    computer = ai();
     createGameBoards();
-    create10x10board("player");
-    create10x10board("ai");
+    renderMessage("Place your ships by hovering over the cells and clicking.");
+  };
+
+  const handleCellHover = (e) => {
+    const x = parseInt(e.target.dataset.x, 10);
+    const y = parseInt(e.target.dataset.y, 10);
+
+    const coordinates = human.playerGameBoard.getShipPlacementCoordinates(
+      shipLength,
+      x,
+      y,
+      direction
+    );
+
+    const playerBoard = document.getElementById("playerBoard");
+    const playerCells = playerBoard.querySelectorAll(".cell");
+
+    playerCells.forEach((cell) => {
+      const cellX = parseInt(cell.dataset.x, 10);
+      const cellY = parseInt(cell.dataset.y, 10);
+
+      if (coordinates.some((coord) => coord.x === cellX && coord.y === cellY)) {
+        cell.classList.add("ship-placement");
+      } else {
+        cell.classList.remove("ship-placement");
+      }
+    });
+  };
+
+  const handleCellClick = (e) => {
+    const cell = e.target;
+    const x = parseInt(cell.dataset.x, 10);
+    const y = parseInt(cell.dataset.y, 10);
+
+    if (!cell.classList.contains("ship-placement")) {
+      return;
+    }
+
+    human.playerGameBoard.placeShip(ship(shipLength), x, y, direction);
+
+    shipLength--;
     displayHumanShips(human.playerGameBoard);
-    humanTurn();
+    if (shipLength >= 2) {
+      renderMessage(
+        `Place your ${shipLength}-length ship by hovering over the cells and clicking.`
+      );
+    } else {
+      renderMessage("");
+      removeCellEventListeners();
+      humanTurn();
+    }
+  };
+
+  const generateRandomPlacement = () => {
+    const shipLengths = [5, 4, 3, 3, 2];
+    shipLengths.forEach((length) => {
+      const x = Math.floor(Math.random() * 10);
+      const y = Math.floor(Math.random() * 10);
+      const direction = Math.random() < 0.5 ? "horizontal" : "vertical";
+      computer.aiGameBoard.placeShip(ship(length), x, y, direction);
+    });
   };
 
   const humanTurn = () => {
     renderMessage("Your turn! Select a coordinate to attack.");
     addAttackListeners(computer.aiGameBoard);
   };
-  
+
   const computerTurn = () => {
     renderMessage("Computer's turn...");
     setTimeout(() => {
@@ -57,7 +118,7 @@ export const gameLoop = (() => {
       }
     }, 1000);
   };
-  
+
   const endGame = () => {
     renderMessage("");
     if (human.playerGameBoard.allShipsSunk()) {
@@ -99,6 +160,17 @@ export const gameLoop = (() => {
     const coordinates = document.querySelectorAll("#aiBoard .cell");
     coordinates.forEach((coordinate) => {
       coordinate.removeEventListener("click", handleClick);
+    });
+  };
+
+  const removeCellEventListeners = () => {
+    const playerBoard = document.getElementById("playerBoard");
+    const playerCells = playerBoard.querySelectorAll(".cell");
+
+    playerCells.forEach((cell) => {
+      cell.removeEventListener("mouseover", handleCellHover);
+      cell.removeEventListener("click", handleCellClick);
+      cell.classList.remove("ship-placement");
     });
   };
 

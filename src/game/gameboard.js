@@ -65,6 +65,22 @@ export const gameBoard = () => {
     return false;
   };
 
+  const getShipPlacementCoordinates = (length, x, y, direction) => {
+    const coordinates = [];
+
+    if (direction === "horizontal") {
+      for (let i = 0; i < length; i++) {
+        coordinates.push({ x: x + i, y });
+      }
+    } else {
+      for (let i = 0; i < length; i++) {
+        coordinates.push({ x, y: y + i });
+      }
+    }
+
+    return coordinates;
+  };
+
   return {
     board,
     missedShots,
@@ -73,5 +89,6 @@ export const gameBoard = () => {
     allShipsSunk,
     checkIfAttacked,
     checkIfHit,
+    getShipPlacementCoordinates,
   };
 };

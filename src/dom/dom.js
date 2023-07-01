@@ -26,7 +26,7 @@ export const create10x10board = (player) => {
 const removeMessage = () => {
   const messageContainer = document.querySelector(".message-container");
   messageContainer.remove();
-}
+};
 
 export const renderMessage = (message) => {
   if (document.querySelector(".message-container")) {
@@ -46,13 +46,11 @@ export const displayHumanShips = (playerGameBoard) => {
     for (let j = 0; j < coordinates.length; j++) {
       const x = coordinates[j].x;
       const y = coordinates[j].y;
-      const cell = humanBoard.querySelector(
-        `[data-x="${x}"][data-y="${y}"]`
-      );
+      const cell = humanBoard.querySelector(`[data-x="${x}"][data-y="${y}"]`);
       cell.classList.add("ship");
     }
   }
-}
+};
 
 const renderBoard = (gameBoard, boardId) => {
   const board = document.getElementById(boardId);
@@ -104,7 +102,8 @@ export const renderGameOver = (winner) => {
   const gameOverMessage = createElement("p", "game-over-message", "");
   const boardsContainer = document.getElementById("boards-container");
   if (winner === "You") {
-    gameOverGift.src = "https://media0.giphy.com/media/SABpzb2ivrS0g4Hgbb/giphy.gif";
+    gameOverGift.src =
+      "https://media0.giphy.com/media/SABpzb2ivrS0g4Hgbb/giphy.gif";
     gameOverMessage.textContent = "You won!";
   } else {
     gameOverGift.src = "https://i.gifer.com/5FGG.gif";
@@ -115,10 +114,3 @@ export const renderGameOver = (winner) => {
   document.body.insertBefore(gameOverContainer, boardsContainer);
   playAgain();
 };
-
-
-
-
-
-
-
