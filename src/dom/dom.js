@@ -51,5 +51,29 @@ export const displayHumanShips = (playerGameBoard) => {
   }
 }
 
+export const renderAIBoard = (gameBoard) => {
+  const board = document.getElementById("aiBoard");
+  const missedShots = gameBoard.missedShots;
+  for (let i = 0; i < missedShots.length; i++) {
+    const x = missedShots[i].x;
+    const y = missedShots[i].y;
+    const cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+    cell.classList.add("missed");
+  }
+  gameBoard.board.forEach(ship => {
+    ship.coordinates.forEach(coord => {
+      const x = coord.x;
+      const y = coord.y;
+      const cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+
+      
+      if (ship.ship.hitArray[x]) {
+        cell.classList.add("hit");
+      }
+    });
+  });
+}
+
+
 
 

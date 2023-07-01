@@ -1,4 +1,4 @@
-import { ship } from "../src/ship.js";
+import { ship } from "../src/game/ship";
 
 test("ship factory function", () => {
   expect(ship(3)).toEqual({

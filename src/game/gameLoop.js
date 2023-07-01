@@ -1,6 +1,7 @@
 import { ship } from "./ship";
 import { player, ai } from "./player.js";
-import { create10x10board, renderMessage, removeMessage, displayHumanShips } from "../dom/dom.js";
+import { create10x10board, renderMessage, removeMessage, displayHumanShips,
+  renderAIBoard} from "../dom/dom.js";
 
 export const gameLoop = (() => {
   let currentPlayer = null;
@@ -19,6 +20,7 @@ export const gameLoop = (() => {
     opponent.aiGameBoard.placeShip(ship(3), 0, 2, "horizontal");
     opponent.aiGameBoard.placeShip(ship(3), 0, 3, "horizontal");
     opponent.aiGameBoard.placeShip(ship(2), 0, 4, "horizontal");
+    console.log(opponent.aiGameBoard);
     create10x10board("player");
     create10x10board("ai");
     displayHumanShips(currentPlayer.playerGameBoard);
@@ -63,30 +65,33 @@ export const gameLoop = (() => {
   };
 
   const addAttackListeners = (gameBoard) => {
-    const coordinates = document.querySelectorAll(".cell");
+    const coordinates = document.querySelectorAll("#aiBoard .cell");
+
+    const handleAttack = (e) => {
+      const x = parseInt(e.target.dataset.x, 10);
+const y = parseInt(e.target.dataset.y, 10);
+
+      if (gameBoard.checkIfAttacked(x, y)) {
+        return;
+      }
+      currentPlayer.attackAI(x, y, gameBoard);
+      renderAIBoard(gameBoard);
+      console.log(gameBoard);
+      if (
+        currentPlayer.playerGameBoard.allShipsSunk() ||
+        opponent.aiGameBoard.allShipsSunk()
+      ) {
+        endGame();
+      } else {
+        currentPlayer = opponent;
+        opponent = currentPlayer;
+        playTurn();
+      }
+    };
+
     coordinates.forEach((coordinate) => {
       coordinate.addEventListener("click", handleAttack);
     });
-  };
-
-  const handleAttack = (e) => {
-    const x = e.target.getAttribute("data-x");
-    const y = e.target.getAttribute("data-y");
-    currentPlayer.attackAI(x, y, gameBoard);
-    renderBoards(
-      currentPlayer.playerGameBoard.board,
-      opponent.aiGameBoard.board
-    );
-    if (
-      currentPlayer.playerGameBoard.allShipsSunk() ||
-      opponent.aiGameBoard.allShipsSunk()
-    ) {
-      endGame();
-    } else {
-      currentPlayer = opponent;
-      opponent = currentPlayer;
-      playTurn();
-    }
   };
 
   const removeAttackListeners = (gameBoard) => {

@@ -53,6 +53,18 @@ export const gameBoard = () => {
     return false;
   };
 
+  const checkIfHit = (x, y) => {
+    for (let i = 0; i < board.length; i++) {
+      const coordinates = board[i].coordinates;
+      for (let j = 0; j < coordinates.length; j++) {
+        if (coordinates[j].x === x && coordinates[j].y === y) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
   return {
     board,
     missedShots,
@@ -60,5 +72,6 @@ export const gameBoard = () => {
     receiveAttack,
     allShipsSunk,
     checkIfAttacked,
+    checkIfHit
   };
 };

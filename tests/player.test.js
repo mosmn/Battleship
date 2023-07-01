@@ -1,4 +1,4 @@
-import { player, ai } from "../src/player.js";
+import { player, ai } from "../src/game/player.js";
 
 let testPlayer;
 let AIPlayer;

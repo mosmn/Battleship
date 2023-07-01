@@ -1,5 +1,5 @@
-import { gameBoard } from "../src/gameboard";
-import { ship } from "../src/ship";
+import { gameBoard } from "../src/game/gameboard";
+import { ship } from "../src/game/ship";
 
 let testShip;
 let testBoard;

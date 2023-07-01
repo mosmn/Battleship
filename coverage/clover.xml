@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1688088059003" clover="3.2.0">
-  <project timestamp="1688088059003" name="All files">
-    <metrics statements="57" coveredstatements="55" conditionals="18" coveredconditionals="15" methods="13" coveredmethods="13" elements="88" coveredelements="83" complexity="0" loc="57" ncloc="57" packages="1" files="3" classes="3"/>
-    <file name="gameboard.js" path="/Users/mohaosman/Desktop/projects/Battleship/src/gameboard.js">
-      <metrics statements="35" coveredstatements="35" conditionals="14" coveredconditionals="13" methods="5" coveredmethods="5"/>
+<coverage generated="1688177714162" clover="3.2.0">
+  <project timestamp="1688177714162" name="All files">
+    <metrics statements="64" coveredstatements="56" conditionals="22" coveredconditionals="15" methods="14" coveredmethods="13" elements="100" coveredelements="84" complexity="0" loc="64" ncloc="64" packages="1" files="3" classes="3"/>
+    <file name="gameboard.js" path="/Users/mohaosman/Desktop/projects/Battleship/src/game/gameboard.js">
+      <metrics statements="42" coveredstatements="36" conditionals="18" coveredconditionals="13" methods="6" coveredmethods="5"/>
       <line num="1" count="2" type="stmt"/>
       <line num="2" count="3" type="stmt"/>
       <line num="3" count="3" type="stmt"/>
@@ -39,8 +39,15 @@
       <line num="50" count="1" type="stmt"/>
       <line num="53" count="3" type="stmt"/>
       <line num="56" count="3" type="stmt"/>
+      <line num="57" count="0" type="stmt"/>
+      <line num="58" count="0" type="stmt"/>
+      <line num="59" count="0" type="stmt"/>
+      <line num="60" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="61" count="0" type="stmt"/>
+      <line num="65" count="0" type="stmt"/>
+      <line num="68" count="3" type="stmt"/>
     </file>
-    <file name="player.js" path="/Users/mohaosman/Desktop/projects/Battleship/src/player.js">
+    <file name="player.js" path="/Users/mohaosman/Desktop/projects/Battleship/src/game/player.js">
       <metrics statements="16" coveredstatements="14" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
       <line num="3" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
@@ -59,7 +66,7 @@
       <line num="26" count="1" type="stmt"/>
       <line num="30" count="1" type="stmt"/>
     </file>
-    <file name="ship.js" path="/Users/mohaosman/Desktop/projects/Battleship/src/ship.js">
+    <file name="ship.js" path="/Users/mohaosman/Desktop/projects/Battleship/src/game/ship.js">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
       <line num="1" count="2" type="stmt"/>
       <line num="2" count="5" type="stmt"/>

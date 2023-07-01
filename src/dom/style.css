@@ -63,3 +63,17 @@ body {
 .ship {
   background-color: #000;
 }
+
+.missed {
+  background-image: url("https://img.icons8.com/emoji/48/000000/cross-mark-emoji.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hit {
+  background-image: url("https://img.icons8.com/emoji/48/000000/fire.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
