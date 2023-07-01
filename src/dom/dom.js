@@ -88,6 +88,35 @@ export const renderPlayerBoard = (gameBoard) => {
   renderBoard(gameBoard, "playerBoard");
 };
 
+const playAgain = () => {
+  const playAgainButton = createElement("button", "play-again-button", "");
+  playAgainButton.textContent = "Play Again";
+  playAgainButton.addEventListener("click", () => {
+    location.reload();
+  });
+  const gameOverContainer = document.querySelector(".game-over-container");
+  gameOverContainer.appendChild(playAgainButton);
+};
+
+export const renderGameOver = (winner) => {
+  const gameOverContainer = createElement("div", "game-over-container", "");
+  const gameOverGift = createElement("img", "game-over-gift", "");
+  const gameOverMessage = createElement("p", "game-over-message", "");
+  const boardsContainer = document.getElementById("boards-container");
+  if (winner === "You") {
+    gameOverGift.src = "https://media0.giphy.com/media/SABpzb2ivrS0g4Hgbb/giphy.gif";
+    gameOverMessage.textContent = "You won!";
+  } else {
+    gameOverGift.src = "https://i.gifer.com/5FGG.gif";
+    gameOverMessage.textContent = "You lost!";
+  }
+  gameOverContainer.appendChild(gameOverGift);
+  gameOverContainer.appendChild(gameOverMessage);
+  document.body.insertBefore(gameOverContainer, boardsContainer);
+  playAgain();
+};
+
+
 
 
 
