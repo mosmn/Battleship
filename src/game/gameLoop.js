@@ -1,6 +1,6 @@
 import { ship } from "./ship";
 import { player, ai } from "./player.js";
-import { create10x10board, renderMessage } from "../dom/dom.js";
+import { create10x10board, renderMessage, removeMessage, displayHumanShips } from "../dom/dom.js";
 
 export const gameLoop = (() => {
   let currentPlayer = null;
@@ -21,6 +21,7 @@ export const gameLoop = (() => {
     opponent.aiGameBoard.placeShip(ship(2), 0, 4, "horizontal");
     create10x10board("player");
     create10x10board("ai");
+    displayHumanShips(currentPlayer.playerGameBoard);
     playTurn();
   };
 

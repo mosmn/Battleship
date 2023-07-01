@@ -30,3 +30,26 @@ export const renderMessage = (message) => {
   messageContainer.appendChild(messageElement);
   document.body.appendChild(messageContainer);
 };
+
+export const removeMessage = () => {
+  const messageContainer = document.querySelector(".message-container");
+  messageContainer.remove();
+}
+
+export const displayHumanShips = (playerGameBoard) => {
+  const humanBoard = document.getElementById("playerBoard");
+  for (let i = 0; i < playerGameBoard.board.length; i++) {
+    const coordinates = playerGameBoard.board[i].coordinates;
+    for (let j = 0; j < coordinates.length; j++) {
+      const x = coordinates[j].x;
+      const y = coordinates[j].y;
+      const cell = humanBoard.querySelector(
+        `[data-x="${x}"][data-y="${y}"]`
+      );
+      cell.classList.add("ship");
+    }
+  }
+}
+
+
+
